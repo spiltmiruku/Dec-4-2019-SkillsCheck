@@ -6,9 +6,10 @@ export default class Form extends Component {
         this.state = {
             url: '',
             productName: '',
-            price: undefined
+            price: 0
         };
         this.add = this.add.bind(this);
+        this.baseState = this.state;
     }
 
     handleChange = e => {
@@ -18,15 +19,14 @@ export default class Form extends Component {
         })
     }
 
-    add() {
+    add = () => {
         let product = { ...this.state };
         // console.log(product);
-        this.props.addProduct(product);
+        this.props.addProduct(product);   
     }
-
-    cancel(e) {
-        e.preventDefault()
-        this.setState(this.state);
+    
+    cancel = () => {
+        this.setState(this.baseState)
     }
 
     render(){
@@ -60,7 +60,7 @@ export default class Form extends Component {
                         Add to Inventory
                     </button>
                 <button
-                    onClick={() => this.cancel({url, productName, price})}
+                    onClick={() => this.cancel()}
                     className='cancelAddBtn'
                     >Cancel</button>
             </div>

@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
 
 export default class Product extends Component {
-    constructor(){
-        super();
-        this.state = {
 
-        }
-    }
-
-    render(){
+    render(props){
         return (
             <div>
+                {this.props.products}
                 Product
             </div>
         )
