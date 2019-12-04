@@ -12,6 +12,14 @@ const {SERVER_PORT, CONNECTION_STRING} = process.env;
 const app = express();
 app.use(express.json());
 
+//ENDPOINTS
+
+app.get(`/api/products`, ctrl.getProducts);
+// app.post(`/api/products`, ctrl.newProduct);
+// app.put(`/api/products`, ctrl.edit);
+// app.delete(`/api/products/:id`, ctrl.delete);
+
+
 massive(CONNECTION_STRING)
 .then(db => {
     app.set('db', db); 
