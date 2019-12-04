@@ -11,7 +11,7 @@ export default class Product extends Component {
     render(){
         return (
             <div>
-                <Product />
+                Product
             </div>
         )
     }
