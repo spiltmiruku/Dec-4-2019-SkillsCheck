@@ -5,9 +5,9 @@ export default class Form extends Component {
     constructor(){
         super();
         this.state = {
-            url: '',
-            productName: '',
-            price: 0
+            name: '',
+            price: 0,
+            img: ''
         };
         this.add = this.add.bind(this);
         this.baseState = this.state;
@@ -31,37 +31,37 @@ export default class Form extends Component {
     }
 
     render(){
-        const {url, productName, price} = this.state
+        const {name, price, img} = this.state
         return (
             
             <div className='newProduct'>
                 <input 
                     onChange={e => this.handleChange(e)} 
-                    value={url}
+                    value={img}
                     placeholder='https://imgur.com' 
                     type='url'
-                    name='url'
+                    name='img'
                     pattern='https://.*'
                    />
                 <input 
                     onChange={e => this.handleChange(e)} 
-                    value={productName}
+                    value={name}
                     placeholder='product name'
                     type='text'
-                    name='productName'/>
+                    name='name'/>
                 <input 
                     onChange={e => this.handleChange(e)} 
                     value={price}
                     placeholder='price'
                     type='number'
                     name='price'/>
-                    <Link to='/'>
+                   
                 <button 
-                    onClick={() => this.add({url, productName, price})}
+                    onClick={() => this.add({name, price, img})}
                     className='addProductBtn'>
                         Add to Inventory
                     </button>
-                    </Link>
+                   
                 <button
                     onClick={() => this.cancel()}
                     className='cancelAddBtn'

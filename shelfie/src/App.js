@@ -68,7 +68,7 @@ export default class App extends Component {
     return (
       <HashRouter>
       <div className="App">
-        <Dashboard />
+        <Dashboard products={this.state.products} deleteProduct={this.delete} />
         <Form />
         <Header />
         <Link to='/' className='link'>Home</Link>
