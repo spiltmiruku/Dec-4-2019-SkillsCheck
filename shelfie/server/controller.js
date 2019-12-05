@@ -13,7 +13,7 @@ module.exports = {
     newProduct: (req, res) => {
         const db = req.app.get('db')
         const {url, productName, price} = req.body
-        db.add_product([name, price, img]).then(products => {
+        db.add_product([productName, price, url]).then(products => {
             console.log(products)
             res.status(200).send(products)
         }).catch(err => {
@@ -26,7 +26,7 @@ module.exports = {
         const db = req.app.get('db')
         const {id} = req.params
         const {name, price, image} = req.body
-        db.edit_product([name, price, image, id]).then(products => {
+        db.edit_product([productName, price, url]).then(products => {
             res.status(200).send(products)
         })
     },

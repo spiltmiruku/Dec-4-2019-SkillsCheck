@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 export default class Form extends Component {
     constructor(){
@@ -54,11 +55,13 @@ export default class Form extends Component {
                     placeholder='price'
                     type='number'
                     name='price'/>
+                    <Link to='/'>
                 <button 
                     onClick={() => this.add({url, productName, price})}
                     className='addProductBtn'>
                         Add to Inventory
                     </button>
+                    </Link>
                 <button
                     onClick={() => this.cancel()}
                     className='cancelAddBtn'

@@ -4,7 +4,8 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Form from './Components/Form/Form';
 import Header from './Components/Header/Header';
 import axios from 'axios';
-
+import {HashRouter, Link} from'react-router-dom';
+import routes from './routes';
 
 
 export default class App extends Component {
@@ -12,9 +13,10 @@ export default class App extends Component {
     super(props);
       this.state = {
         products: [{
-          url: props.obj.img,
-          productName: props.obj.name,
-          price: props.obj.price
+          name: props.name,
+          price: props.price,
+          img: props.img
+
         }],
         isEditing: false
       }
@@ -32,34 +34,50 @@ export default class App extends Component {
     })
   }
 
-  newProduct = () => {
-    axios.post('/api/products', body).then(res => {
+  newProduct = (body) => {
+    console.log('hit new product', body)
+    axios.post('/api/products', body)
+    .then(res => {
       console.log(res.data)
         this.setState({
           products: res.data
         })
     })
-  }
-
-  edit = () => {
-    let product = { ...this.state };
-    delete product.isEditing
-
+    .catch(error => console.log(error))
   }
 
 
-  // delete
+  edit = (id, product) => {
+    axios.put(`/api/products?id=${id}`, product)
+    .then(res => {
+      this.setState({ products: res.data })
+    })
+    .catch(error => console.log(error))
+  }
 
+  delete = (id) => {
+    axios.delete(`/api/products/${id}`)
+    .then(res => {
+      this.setState({ products: res.data });
+    })
+    .catch(error => console.log(error))
+  }
 
 
   render(){
     return (
+      <HashRouter>
       <div className="App">
         <Dashboard />
         <Form />
         <Header />
-  
+        <Link to='/' className='link'>Home</Link>
+        {/* <Link to='/add'></Link>
+        <Link to='edit/:id'></Link> */}
+
+  {routes}
       </div>
+      </HashRouter>
     );
   }
 

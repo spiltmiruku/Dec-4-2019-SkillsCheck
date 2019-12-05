@@ -4,13 +4,14 @@ const ctrl = require('./controller'),
       gradient = require('gradient-string'),
       massive = require('massive'),
       dotenv = require('dotenv');
-      
-const PORT = 3456
-
 const {SERVER_PORT, CONNECTION_STRING} = process.env;
-
+    
 const app = express();
 app.use(express.json());
+
+const PORT = 3456
+
+
 
 //ENDPOINTS
 
