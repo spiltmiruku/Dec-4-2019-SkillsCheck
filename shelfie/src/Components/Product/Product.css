@@ -1,0 +1,26 @@
+.productContainer {
+	border-radius: 4px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 300px;
+	padding: 20px;
+}
+.productContainer img {
+	width: auto;
+	height: 100px;
+}
+
+.productContainer .details {
+	margin-left: 20px;
+}
+
+.productContainer button {
+	background: #3ad886;
+	border: 0;
+	border-radius: 4px;
+	padding: 8px;
+	margin-right: 4px;
+	margin-top: 8px;
+}
